@@ -8,10 +8,14 @@ import java.nio.file.Paths;
 @RestController
 public class HelloController {
 
+    private final String appName;
+
+    public HelloController() {
+        this.appName = Paths.get("").toAbsolutePath().getFileName().toString();
+    }
+
     @GetMapping("/ping")
     public String ping() {
-        // Derive the application name from the folder name
-        String appName = Paths.get("").toAbsolutePath().getFileName().toString();
         return "Application '" + appName + "' is up and running!";
     }
 }

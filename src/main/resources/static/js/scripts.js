@@ -1,16 +1,14 @@
+function handleResponse(elementId, data, isError = false) {
+    const responseElement = document.getElementById(elementId);
+    responseElement.innerHTML = isError ? '<code>Error: ' + data + '</code>' : '<code>' + data + '</code>';
+    responseElement.style.display = 'block';
+}
+
 function pingServer() {
     fetch('/ping')
         .then(response => response.text())
-        .then(data => {
-            const pingResponse = document.getElementById('pingResponse');
-            pingResponse.innerHTML = '<code>' + data + '</code>';
-            pingResponse.style.display = 'block';
-        })
-        .catch(error => {
-            const pingResponse = document.getElementById('pingResponse');
-            pingResponse.innerHTML = '<code>Error: ' + error + '</code>';
-            pingResponse.style.display = 'block';
-        });
+        .then(data => handleResponse('pingResponse', data))
+        .catch(error => handleResponse('pingResponse', error, true));
 }
 
 function clearResponse() {
@@ -29,29 +27,13 @@ function addRecord() {
         body: JSON.stringify({ value: value })
     })
     .then(response => response.json())
-    .then(data => {
-        const addResponse = document.getElementById('addResponse');
-        addResponse.innerHTML = '<code>Added: ' + JSON.stringify(data) + '</code>';
-        addResponse.style.display = 'block';
-    })
-    .catch(error => {
-        const addResponse = document.getElementById('addResponse');
-        addResponse.innerHTML = '<code>Error: ' + error + '</code>';
-        addResponse.style.display = 'block';
-    });
+    .then(data => handleResponse('addResponse', 'Added: ' + JSON.stringify(data)))
+    .catch(error => handleResponse('addResponse', error, true));
 }
 
 function readRecords() {
     fetch('/read')
         .then(response => response.json())
-        .then(data => {
-            const readResponse = document.getElementById('readResponse');
-            readResponse.innerHTML = '<code>' + JSON.stringify(data, null, 2) + '</code>';
-            readResponse.style.display = 'block';
-        })
-        .catch(error => {
-            const readResponse = document.getElementById('readResponse');
-            readResponse.innerHTML = '<code>Error: ' + error + '</code>';
-            readResponse.style.display = 'block';
-        });
+        .then(data => handleResponse('readResponse', JSON.stringify(data, null, 2)))
+        .catch(error => handleResponse('readResponse', error, true));
 }
