@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+    <h1 th:text="${appName}"></h1>
+    <p>Hello, World!</p>
+    <p>This is a simple Spring Boot application.</p>
+    <button onclick="pingServer()">Ping Server</button>
+    <button onclick="clearResponse()">Clear</button>
+    <pre id="pingResponse"></pre>
+
+    <h2>Add Record</h2>
+    <input type="text" id="recordInput" placeholder="Enter value">
+    <button onclick="addRecord()">Add</button>
+    <pre id="addResponse"></pre>
+
+    <h2>Read Records</h2>
+    <button onclick="readRecords()">Read</button>
+    <pre id="readResponse"></pre>
+
+    <script src="/js/scripts.js"></script>
+</body>
+</html>
