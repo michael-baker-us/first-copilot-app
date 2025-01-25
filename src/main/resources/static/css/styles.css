@@ -46,3 +46,22 @@ footer {
     right: 0;
     width: 100%;
 }
+
+.tic-tac-toe {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin: 20px auto;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid #000;
+    font-size: 2em;
+    cursor: pointer;
+    user-select: none;
+}

@@ -57,3 +57,6 @@ tmp/
 *.iml
 .idea/
 out/
+
+# Target folder
+target/
