@@ -65,3 +65,73 @@ footer {
     cursor: pointer;
     user-select: none;
 }
+
+.winning-cell {
+    animation: winning-animation 1s infinite;
+}
+
+@keyframes winning-animation {
+    0%, 100% {
+        background-color: #fff;
+    }
+    50% {
+        background-color: #d4edda;
+    }
+}
+
+.calculator {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 10px;
+    max-width: 200px;
+    margin: 20px 0; /* Remove auto to align left */
+}
+
+.calc-display {
+    background-color: #333;
+    color: #fff;
+    font-size: 2em;
+    padding: 10px;
+    text-align: right;
+    border-radius: 4px;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.calc-buttons button {
+    padding: 20px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.calc-buttons button:hover {
+    background-color: #ddd;
+}
+
+.calc-buttons .blank-button-1 {
+    background-color: #e0e0e0;
+}
+
+.calc-buttons .blank-button-2 {
+    background-color: #c0c0c0;
+}
+
+.calc-buttons .equals {
+    grid-column: span 2;
+}
+
+#resetButton {
+    margin-bottom: 60px; /* Increase margin to prevent being hidden behind the footer */
+}
+
+body {
+    /* Add scroll bounce effect */
+    -webkit-overflow-scrolling: touch;
+}

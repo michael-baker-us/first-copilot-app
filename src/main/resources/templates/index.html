@@ -24,6 +24,33 @@
     <button onclick="readRecords()">Read</button>
     <pre id="readResponse"></pre>
 
+    <h2>Calculator</h2>
+    <div class="calculator">
+        <div id="calcDisplay" class="calc-display">0</div>
+        <div class="calc-buttons">
+            <button onclick="clearCalcDisplay()">C</button>
+            <button onclick="appendToCalcDisplay('/')">/</button>
+            <button onclick="appendToCalcDisplay('*')">*</button>
+            <button onclick="appendToCalcDisplay('-')">-</button>
+            <button onclick="appendToCalcDisplay('7')">7</button>
+            <button onclick="appendToCalcDisplay('8')">8</button>
+            <button onclick="appendToCalcDisplay('9')">9</button>
+            <button onclick="appendToCalcDisplay('+')">+</button>
+            <button onclick="appendToCalcDisplay('4')">4</button>
+            <button onclick="appendToCalcDisplay('5')">5</button>
+            <button onclick="appendToCalcDisplay('6')">6</button>
+            <button onclick="appendToCalcDisplay('.')">.</button>
+            <button onclick="appendToCalcDisplay('1')">1</button>
+            <button onclick="appendToCalcDisplay('2')">2</button>
+            <button onclick="appendToCalcDisplay('3')">3</button>
+            <button class="blank-button-1"> </button> <!-- First blank button -->
+            <button class="blank-button-2"> </button> <!-- Second blank button -->
+            <button onclick="appendToCalcDisplay('0')">0</button>
+            <button onclick="calculateResult()" class="equals">=</button>
+        </div>
+    </div>
+
+    <h2>Tic Tac Toe</h2>
     <div class="tic-tac-toe">
         <div class="cell"></div>
         <div class="cell"></div>

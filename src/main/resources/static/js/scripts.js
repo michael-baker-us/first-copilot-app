@@ -78,6 +78,7 @@ function checkWinner() {
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
             handleResponse('gameStatus', `Player ${board[a]} wins!`);
             gameActive = false;
+            animateWinningCells(combination);
             return;
         }
     }
@@ -88,6 +89,13 @@ function checkWinner() {
     }
 }
 
+function animateWinningCells(combination) {
+    combination.forEach(index => {
+        const cell = document.querySelectorAll('.cell')[index];
+        cell.classList.add('winning-cell');
+    });
+}
+
 function resetGame() {
     board = ['', '', '', '', '', '', '', '', ''];
     currentPlayer = 'X';
@@ -96,9 +104,64 @@ function resetGame() {
     const gameStatus = document.getElementById('gameStatus');
     gameStatus.innerHTML = '';
     gameStatus.style.display = 'none';
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach(cell => {
+        cell.classList.remove('winning-cell');
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     initializeGame();
     document.getElementById('resetButton').addEventListener('click', resetGame);
+    updateCalcDisplay();
 });
+
+function calculate(operation) {
+    const num1 = parseFloat(document.getElementById('num1').value);
+    const num2 = parseFloat(document.getElementById('num2').value);
+    let result;
+
+    switch (operation) {
+        case 'add':
+            result = num1 + num2;
+            break;
+        case 'subtract':
+            result = num1 - num2;
+            break;
+        case 'multiply':
+            result = num1 * num2;
+            break;
+        case 'divide':
+            result = num1 / num2;
+            break;
+        default:
+            result = 'Invalid operation';
+    }
+
+    document.getElementById('calcResult').innerText = `Result: ${result}`;
+}
+
+let calcDisplay = '';
+
+function updateCalcDisplay() {
+    document.getElementById('calcDisplay').innerText = calcDisplay || '0';
+}
+
+function appendToCalcDisplay(value) {
+    calcDisplay += value;
+    updateCalcDisplay();
+}
+
+function clearCalcDisplay() {
+    calcDisplay = '';
+    updateCalcDisplay();
+}
+
+function calculateResult() {
+    try {
+        calcDisplay = eval(calcDisplay).toString();
+    } catch (e) {
+        calcDisplay = 'Error';
+    }
+    updateCalcDisplay();
+}
